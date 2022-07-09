@@ -1,0 +1,52 @@
+<%= form_with(model: show) do |form| %>
+
+  <% if show.errors.any? %>
+    <div class="card text-bg-danger mb-3" style="width: 28rem; color: red;">
+      <div class="card-body">
+        <h3 class="card-title"><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h3>
+        
+        <p class="card-text">
+        
+          <ul>
+            <% show.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </p>
+        
+      </div>
+    </div>
+<% end %>
+
+
+  <div>
+    
+    <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+    <br/>
+  </div>
+  <div>
+    
+    <%= form.text_field :link, class: "form-control", placeholder: "Link" %>
+    <br/>
+  </div>
+  <div>
+    
+    <%= form.text_field :priority , class: "form-control", placeholder: "Priority: 3/10 (n/10 - where n is how much you want to watch this show)"%>
+    <br/>
+  </div>
+  <div>
+   
+    <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
+    <br/>
+  </div>
+
+  <div>
+    <%= form.number_field :user_id, id: :show_user_id , class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+  <div>
+  <br/>
+  <div>
+    <%= form.submit "Update  this  show ", class: "btn btn-secondary"%>
+  </div>
+<% end %>

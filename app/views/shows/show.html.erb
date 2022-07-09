@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    <h2><%=@show.name%></h2>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+        Priority: <%=@show.priority%>
+      <p>
+      <br/>
+        Description: <%=@show.description%>
+      </p>
+      <br/>
+       <%=@show.link%>
+    </h5>
+  </div>
+
+
+<div >
+  
+  <%= link_to "Edit", edit_show_path(@show), class: "btn btn-secondary" %> 
+  <%= link_to "Back", shows_path, class: "btn btn-secondary" %>
+  <br><br/>
+  <%= button_to "Delete show", @show, method: :delete, class: "btn btn-danger",form: {data: {turbo_confirm: 'Are you sure?'}} %>
+ </div>
+
+</div>
+
